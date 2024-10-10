@@ -1,4 +1,4 @@
-name: Release Kotlin library
+name: Release esusab-kotlin
 on:
   workflow_dispatch:
     inputs:
@@ -19,11 +19,13 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
 
+      - name: 'Install dependencies'
+        run: sudo apt install gradle thrift-compiler -y
+
       - name: 'Create project folder'
         run: |
           mkdir esusab-kotlin
           cd esusab-kotlin
           
-      - name: 'Validade gradle wrapper'
-        run: apt install gradle -y
+
           
