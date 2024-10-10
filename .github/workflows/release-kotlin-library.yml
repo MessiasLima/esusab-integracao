@@ -9,11 +9,14 @@ on:
 jobs:
   create:
     runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21-jammy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: 'Setup Java'
+        if: false
         uses: actions/setup-java@v4
         with:
           java-version: '21'
@@ -21,16 +24,13 @@ jobs:
 
       - name: 'Install dependencies'
         run: |
-          sudo apt update
-          sudo apt install gradle thrift-compiler -y
+          apt update
+          apt install thrift-compiler tree -y
 
-      - name: 'Create project folder'
+      - name: 'Init project'
         run: |
           mkdir esusab-kotlin
           cd esusab-kotlin
-          
-      - name: 'Init project'
-        run: |
           gradle --version
           gradle init \
             --type kotlin-application \
@@ -39,9 +39,9 @@ jobs:
             --project-name esusab-kotlin  \
             --no-split-project  \
             --java-version 21
+          tree -d .
       
-      - name: 'Print file structure'
-        run: 'tree -d .'
+
           
 
           
