@@ -20,12 +20,27 @@ jobs:
           distribution: 'adopt'
 
       - name: 'Install dependencies'
-        run: sudo apt install gradle thrift-compiler -y
+        run: |
+          sudo apt update
+          sudo apt install gradle thrift-compiler -y
 
       - name: 'Create project folder'
         run: |
           mkdir esusab-kotlin
           cd esusab-kotlin
+          
+      - name: 'Init project'
+        run: |
+          gradle init \
+            --type kotlin-application \
+            --dsl kotlin \
+            --package br.gov.saude.esusab.ras \
+            --project-name esusab-kotlin  \
+            --no-split-project  \
+            --java-version 21
+      
+      - name: 'Print file structure'
+        run: 'tree -d .'
           
 
           
