@@ -18,7 +18,7 @@ jobs:
       - name: 'Install dependencies'
         run: |
           apt update
-          apt install thrift-compiler tree -y
+          apt install tree -y
 
       - name: 'Init project'
         run: |
@@ -33,11 +33,7 @@ jobs:
             --no-split-project  \
             --java-version 21
 
-      - name: Generate Kotlin classes
+      - name: Move java classes
         run: |
-          sh .github/workflows/scripts/generate-kotlin-classes.sh
+          mv thrift/layout-ras/gen-javabean/br esusab-java/lib/src/main/java
           tree -d .
-
-          
-
-          
