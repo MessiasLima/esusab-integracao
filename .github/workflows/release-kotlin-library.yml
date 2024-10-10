@@ -1,0 +1,29 @@
+name: Release Kotlin library
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The library version. For consistency, it should be the the LEDI APS Version on https://integracao.esusab.ufsc.br/ledi/index.html'
+        required: true
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 'Setup Java'
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+
+      - name: 'Create project folder'
+        run: |
+          mkdir esusab-kotlin
+          cd esusab-kotlin
+          
+      - name: 'Validade gradle wrapper'
+        uses: gradle/actions/wrapper-validation@v4
+          
