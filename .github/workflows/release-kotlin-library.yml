@@ -15,13 +15,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 'Setup Java'
-        if: false
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'adopt'
-
       - name: 'Install dependencies'
         run: |
           apt update
@@ -34,13 +27,16 @@ jobs:
           gradle --version
           gradle init \
             --type kotlin-application \
-            --dsl kotlin \
+            --dsl groovy \
             --package br.gov.saude.esusab.ras \
             --project-name esusab-kotlin  \
             --no-split-project  \
             --java-version 21
+
+      - name: Generate Kotlin classes
+        run: |
+          sh .github/workflows/scripts/generate-kotlin-classes.sh
           tree -d .
-      
 
           
 
