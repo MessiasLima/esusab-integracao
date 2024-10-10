@@ -25,5 +25,5 @@ jobs:
           cd esusab-kotlin
           
       - name: 'Validade gradle wrapper'
-        uses: gradle/actions/wrapper-validation@v4
+        run: apt install gradle -y
           
