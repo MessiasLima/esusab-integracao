@@ -1,4 +1,4 @@
-name: Release esusab-kotlin
+name: Release esusab-java
 on:
   workflow_dispatch:
     inputs:
@@ -22,14 +22,14 @@ jobs:
 
       - name: 'Init project'
         run: |
-          mkdir esusab-kotlin
-          cd esusab-kotlin
+          mkdir esusab-java
+          cd esusab-java
           gradle --version
           gradle init \
-            --type kotlin-application \
+            --type java-library \
             --dsl groovy \
             --package br.gov.saude.esusab.ras \
-            --project-name esusab-kotlin  \
+            --project-name esusab-java  \
             --no-split-project  \
             --java-version 21
 
