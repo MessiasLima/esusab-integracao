@@ -15,6 +15,7 @@ repositories {
 dependencies {
     // libthrift is already on 0.21.0, however the files were compiled using 0.9.3 version
     implementation("org.apache.thrift:libthrift:0.9.3")
+    implementation("javax.annotation:javax.annotation-api:1.3.2")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
