@@ -9,31 +9,10 @@ on:
 jobs:
   create:
     runs-on: ubuntu-latest
-    container:
-      image: gradle:8.10.2-jdk21-jammy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 'Install dependencies'
-        run: |
-          apt update
-          apt install tree -y
-
-      - name: 'Init project'
-        run: |
-          mkdir esusab-java
-          cd esusab-java
-          gradle --version
-          gradle init \
-            --type java-library \
-            --dsl groovy \
-            --package br.gov.saude.esusab.ras \
-            --project-name esusab-java  \
-            --no-split-project  \
-            --java-version 21
-
       - name: Move java classes
         run: |
-          mv thrift/layout-ras/gen-javabean/br esusab-java/lib/src/main/java
-          tree -d .
+          mv thrift/layout-ras/gen-javabean/br library/esusab-java/src/main/java
