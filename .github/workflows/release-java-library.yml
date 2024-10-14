@@ -26,5 +26,6 @@ jobs:
       - name: Publish package
         run: |
           cd library/esusab-java
+          gradle build
           gradle publish
       
