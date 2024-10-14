@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "br.gov.saude.esusab"
-version = System.getenv("VERSION_ESUSAB_JAVA") ?: "1.0-SNAPSHOT"
+version = System.getenv("VERSION_ESUSAB_JAVA") ?: "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
