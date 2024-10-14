@@ -17,11 +17,13 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
+val repo: String = System.getenv("GITHUB_REPOSITORY") ?: "laboratoriobridge/esusab-integracao"
+
 publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = URI("https://maven.pkg.github.com/messiaslima/esusab-integracao")
+            url = URI("https://maven.pkg.github.com/$repo")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")

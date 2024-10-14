@@ -9,6 +9,8 @@ on:
 jobs:
   create:
     runs-on: ubuntu-latest
+    container:
+      image: gradle:8.10.2-jdk21-jammy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -16,3 +18,9 @@ jobs:
       - name: Move java classes
         run: |
           mv thrift/layout-ras/gen-javabean/br library/esusab-java/src/main/java
+
+      - name: Publish package
+        run: |
+          cd library/esusab-java
+          gradle publish
+      
